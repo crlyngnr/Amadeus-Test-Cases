@@ -7,6 +7,9 @@ class TestFlightAPI(unittest.TestCase):
         response = requests.get('https://flights-api.buraky.workers.dev/')
         self.assertEqual(response.status_code, 200, "HTTP status kodu beklenen değerde değil.")
 
+        #Response içeriği yazdırma
+        print(response.text)
+
     #Response içeriğini kontrol et
     def test_response_structure(self):
         response = requests.get('https://flights-api.buraky.workers.dev/')

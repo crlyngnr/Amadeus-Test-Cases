@@ -1,18 +1,28 @@
 import unittest
 import requests
 
+
+
+
+ENDPOINT = 'https://flights-api.buraky.workers.dev/'
+
 class TestFlightAPI(unittest.TestCase):
+
+
     #HTTP status code’larını kontrol et
     def test_status_code(self):
-        response = requests.get('https://flights-api.buraky.workers.dev/')
+        response = requests.get(ENDPOINT)
         self.assertEqual(response.status_code, 200, "HTTP status kodu beklenen değerde değil.")
+        
+        #HTTP status code değerini bastırma
+        print("HTTP Status Code:", response.status_code)
 
         #Response içeriği yazdırma
         print(response.text)
 
     #Response içeriğini kontrol et
     def test_response_structure(self):
-        response = requests.get('https://flights-api.buraky.workers.dev/')
+        response = requests.get(ENDPOINT)
         json_data = response.json()
 
         self.assertIsInstance(json_data, dict, "Response JSON verisi bir sözlük değil.")
@@ -26,7 +36,7 @@ class TestFlightAPI(unittest.TestCase):
 
     #Header kontrolü
     def test_content_type_header(self):
-        response = requests.get('https://flights-api.buraky.workers.dev/')
+        response = requests.get(ENDPOINT)
         self.assertEqual(response.headers['Content-Type'], 'application/json', "Content-Type başlığı beklenen değerde değil.")
 
 if __name__ == '__main__':

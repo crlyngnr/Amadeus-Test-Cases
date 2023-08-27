@@ -20,7 +20,7 @@ test_successful = True  # Başlangıçta test başarılı kabul ediliyor
 try:
     for from_option in from_options:
         for to_option in to_options:
-            if from_option != to_option:  # Aynı şehirler seçilmesini önleniyor
+            if from_option != to_option:  # Aynı şehirlerin seçilmesini önleniyor
                 # "From" alanına şehir seçiliyor
                 from_input = driver.find_element("id", "headlessui-combobox-input-:Rq9lla:")
                 from_input.clear()

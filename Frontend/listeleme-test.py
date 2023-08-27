@@ -8,7 +8,7 @@ import time
 # Web sürücüsünü başlatma
 driver = webdriver.Chrome()
 
-# Flight App sayfasını açma
+# Flight App sayfası açılıyor
 driver.get("https://flights-app.pages.dev/")
 
 # "From" ve "To" alanları için seçenekler
@@ -21,7 +21,7 @@ try:
     for from_option in from_options:
         for to_option in to_options:
             if from_option != to_option:  # Aynı şehirler seçilmesini önleniyor
-                # "From" alanına şehri seçiliyor
+                # "From" alanına şehir seçiliyor
                 from_input = driver.find_element("id", "headlessui-combobox-input-:Rq9lla:")
                 from_input.clear()
                 from_input.send_keys(from_option)
@@ -29,19 +29,19 @@ try:
 
                 time.sleep(0.001)  # Seçimleri görmek için bekelme süresi ekleniyor
 
-                # "To" alanına şehri seçiliyor
+                # "To" alanına şehir seçiliyor
                 to_input = driver.find_element("id", "headlessui-combobox-input-:Rqhlla:")
                 to_input.clear()
                 to_input.send_keys(to_option)
                 to_input.send_keys(Keys.RETURN)
 
-                time.sleep(0.001)  # Seçimleri görmek için bekelme süresi ekleniyor
+                time.sleep(0.001)  # Seçimleri görmek için bekeleme süresi ekleniyor
 
                 try:
-                    # "Found X items" yazısını alınıyor
+                    # "Found X items" yazısı alınıyor
                     found_items = driver.find_element("xpath", "//p[contains(text(), 'Found ')]").text
 
-                    # X değerini alınıyor
+                    # X değeri alınıyor
                     found_items_count = int(found_items.split(" ")[1])
 
                     # Uçuş bulunup bulunmadığı kontrol ediliyor
